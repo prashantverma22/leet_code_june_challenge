@@ -1,0 +1,40 @@
+class Solution {
+    vector<int> csum; 
+    int sum;
+public:
+    Solution(vector<int>& w) {
+        sum=0;
+        for(int x : w){
+            sum += x;
+            csum.push_back(sum);
+        }
+    }
+    
+    int pickIndex() {
+        int idx = (rand() % sum) + 1;
+        return binarySearch(idx);
+    }
+    int binarySearch(int key){
+        int s=0;
+        int e=csum.size()-1;
+        while(s < e){
+            int mid = (s + e)/2;
+            if(csum[mid] == key){
+                return mid;
+            }
+            else if( csum[mid] < key){
+                s = mid + 1;
+            }
+            else{
+                e = mid;
+            }   
+        }
+        return s;
+    }
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution* obj = new Solution(w);
+ * int param_1 = obj->pickIndex();
+ */
