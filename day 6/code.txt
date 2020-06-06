@@ -1,0 +1,18 @@
+class Solution {
+    static bool comp(vector<int> &a, vector<int> &b){
+        return (a[0] > b[0] || a[0] == b[0] && a[1] < b[1]);
+    }
+public:
+    vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+        //sorting people in the queue on the basis of their heights and if
+        // two people are of same height, then one with smallest value of
+        // 'k' will come first, i.e. in ascending order.
+        sort(people.begin(), people.end(), comp);
+        vector<vector<int> > result;  // vector to store the pairs
+        for(int i=0; i< people.size(); i++)
+        {
+            result.insert(result.begin() + people[i][1], people[i]);
+        }
+        return result;
+    }
+};
