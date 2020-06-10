@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int n = nums.size();  
+        int start = 0;   //first index
+        int end = n-1;   //last index
+        while(start <= end){
+            int mid = (start + end)/2;  //mid point of the array
+            if(nums[mid] == target){
+                return mid;
+            }
+            else if(nums[mid] > target){  //search in the left half
+                end = mid - 1;
+            }
+            else{
+                start = mid + 1;     //search in the right half
+            }
+        }
+        return start;  // if a number is not present in the array, then this would be the exact position
+                       // or index at which the number should be present.
+    }
+};
