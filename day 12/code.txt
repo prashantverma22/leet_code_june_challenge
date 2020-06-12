@@ -1,6 +1,6 @@
 class RandomizedSet {
-    vector<int> arr; //to store duplicate elements
-    unordered_map<int,int> m;  // accountable for elements in the data structure
+    vector<int> arr; 
+    unordered_map<int,int> m;  
 public:
     /** Initialize your data structure here. */
     RandomizedSet() {
