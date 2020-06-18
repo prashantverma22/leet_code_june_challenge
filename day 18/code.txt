@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int hIndex(vector<int>& citations) {
+        int n = citations.size();
+        int l=0;
+        int r=citations.size()-1;
+        while(l <= r){
+            int h = (l + r)/2;
+            if(citations[h] == (n-h)){
+                return (n-h);
+            }
+            else if(citations[h] > (n-h)){
+                r = h-1;
+            }
+            else{
+                l = h+1;
+            }
+        }
+        return n-l;
+    }
+};
