@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int total;
+    void helper(TreeNode* root,int sum){
+        if(root==NULL){
+            return;
+        }
+        sum = sum * 10 + root->val;
+        if(root->left == NULL && root->right == NULL){ 
+            total += sum;
+            return;
+        }
+        helper(root->left, sum);
+        helper(root->right, sum);
+    }
+    int sumNumbers(TreeNode* root) {
+        total=0;
+        helper(root,0);
+        return total;
+    }
+};
