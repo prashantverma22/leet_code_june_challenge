@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int numSquares(int n) {
+        vector<int> dp(n+1,0);
+        for(int i=1; i<=n; i++){
+            int val = i;
+            int sq = 1, x=1;
+            while(sq <= i){
+                val = min(val, 1 + dp[i-sq]);
+                x++;
+                sq = x*x;
+            }
+            dp[i] = val;
+        }
+        return dp[n];
+    }
+};
